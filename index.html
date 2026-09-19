@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sewa Alat Berat — PT. Bina Bangun Banua Bersama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17222A;
+    --ink-soft:#4B5A63;
+    --paper:#EDEAE1;
+    --paper-raised:#F7F5EF;
+    --steel:#3E5B6B;
+    --steel-deep:#2A4553;
+    --amber:#E08A1E;
+    --amber-deep:#B96C10;
+    --line:#C7C0AE;
+    --line-strong:#9C9483;
+    --white:#FFFFFF;
+    --danger:#B34632;
+    --ok:#4C7A4C;
+    --radius:2px;
+    --font-display:'Archivo', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#ECE7DC;
+      --ink-soft:#AEB8BD;
+      --paper:#161E24;
+      --paper-raised:#1D262D;
+      --steel:#7FA0B0;
+      --steel-deep:#9BBAC8;
+      --amber:#F0A23D;
+      --amber-deep:#F6B762;
+      --line:#38434B;
+      --line-strong:#4C5860;
+      --white:#0F161B;
+      --danger:#E17A63;
+      --ok:#7FB37F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#ECE7DC;
+    --ink-soft:#AEB8BD;
+    --paper:#161E24;
+    --paper-raised:#1D262D;
+    --steel:#7FA0B0;
+    --steel-deep:#9BBAC8;
+    --amber:#F0A23D;
+    --amber-deep:#F6B762;
+    --line:#38434B;
+    --line-strong:#4C5860;
+    --white:#0F161B;
+    --danger:#E17A63;
+    --ok:#7FB37F;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding:32px 20px 80px;
+  }
+  .sheet{
+    max-width:1180px;
+    margin:0 auto;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+  }
+
+  /* ---------- header / logo ---------- */
+  .head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:28px 32px 22px;
+    border-bottom:2px solid var(--ink);
+  }
+  .head-left h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(28px,4vw,40px);
+    letter-spacing:-0.01em;
+    margin:0 0 6px;
+    line-height:1.05;
+  }
+  .head-left p{
+    margin:0;
+    color:var(--ink-soft);
+    max-width:56ch;
+    font-size:14.5px;
+  }
+  .head-logo{
+    flex:0 0 auto;
+    max-width:220px;
+    display:flex;
+    justify-content:flex-end;
+  }
+  .head-logo img{
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+  }
+
+  /* ---------- two column layout ---------- */
+  .main-grid{
+    display:grid;
+    grid-template-columns:1fr 300px;
+  }
+  .main-col{border-right:1px solid var(--line);}
+  @media (max-width:900px){
+    .main-grid{grid-template-columns:1fr;}
+    .main-col{border-right:none;}
+  }
+
+  .block + .block{border-top:2px solid var(--ink);}
+  .block-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:22px 32px 4px;
+  }
+  .block-head h2{
+    font-family:var(--font-display);
+    font-size:19px;
+    font-weight:800;
+    margin:0;
+  }
+  .block-head p.sub{
+    margin:2px 0 0;
+    color:var(--ink-soft);
+    font-size:13px;
+    width:100%;
+  }
+
+  /* ---------- side notes column ---------- */
+  .side-col{
+    padding:24px 22px;
+    background:var(--paper);
+  }
+  .note-card{
+    position:sticky;
+    top:20px;
+    border:1px solid var(--line-strong);
+    background:var(--paper-raised);
+    padding:18px 18px 20px;
+  }
+  .note-card h3{
+    margin:0 0 14px;
+    font-family:var(--font-display);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--steel-deep);
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+  }
+  .note-card ul{
+    margin:0;
+    padding-left:18px;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+  }
+  .note-card li{
+    font-size:12.8px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .note-card .wa-box{
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px dashed var(--line-strong);
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+  .note-card .wa-box strong{display:block;color:var(--ink);font-family:var(--font-body);font-size:12.5px;margin-bottom:3px;}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .count{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .toolbar .right{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  input[type="search"]{
+    font-family:var(--font-body);
+    font-size:14px;
+    padding:9px 12px;
+    border:1px solid var(--line-strong);
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:var(--radius);
+    min-width:200px;
+  }
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  input[type="tel"]:focus,
+  select:focus,
+  button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:1px;
+  }
+
+  button{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:13.5px;
+    cursor:pointer;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    padding:9px 14px;
+    transition:transform .12s ease;
+  }
+  button:active{transform:translateY(1px);}
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper-raised);
+    border-color:var(--ink);
+  }
+  .btn-primary:hover{background:var(--steel-deep);border-color:var(--steel-deep);}
+  .btn-wa{
+    background:#2f7a4f;
+    color:#fff;
+    border-color:#2f7a4f;
+  }
+  .btn-wa:hover{background:#256240;border-color:#256240;}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line-strong);
+  }
+  .btn-ghost:hover{border-color:var(--ink);}
+  .btn-text{
+    background:none;
+    border:none;
+    padding:6px 8px;
+    color:var(--steel-deep);
+    font-size:13px;
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .btn-text.danger{color:var(--danger);}
+  .btn-text:hover{opacity:.75;}
+
+  /* ---------- form panel ---------- */
+  #panel, #oPanel{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    overflow:hidden;
+    max-height:0;
+    transition:max-height .28s ease;
+  }
+  #panel.open, #oPanel.open{max-height:620px;}
+  .panel-inner{padding:22px 32px 26px;}
+  .panel-inner h2{
+    font-family:var(--font-display);
+    font-size:16px;
+    font-weight:700;
+    margin:0 0 16px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:16px 20px;
+  }
+  .grid .full{grid-column:1 / -1;}
+  label{
+    display:block;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+    font-family:var(--font-mono);
+  }
+  input[type="text"],input[type="number"],input[type="date"],input[type="tel"],select,textarea{
+    width:100%;
+    font-family:var(--font-body);
+    font-size:14.5px;
+    padding:9px 10px;
+    border:1px solid var(--line-strong);
+    background:var(--paper-raised);
+    color:var(--ink);
+    border-radius:var(--radius);
+  }
+  textarea{resize:vertical;min-height:52px;font-family:var(--font-body);}
+  .field-error{
+    display:none;
+    font-size:12px;
+    color:var(--danger);
+    margin-top:4px;
+  }
+  .invalid .field-error{display:block;}
+  .invalid input, .invalid select{border-color:var(--danger);}
+  .panel-actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .est-line{
+    grid-column:1/-1;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--steel-deep);
+    background:rgba(62,91,107,0.08);
+    padding:8px 10px;
+    border-radius:var(--radius);
+  }
+
+  /* ---------- table ---------- */
+  .table-wrap{overflow-x:auto;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:680px;
+  }
+  thead th{
+    text-align:left;
+    font-family:var(--font-mono);
+    font-weight:500;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    padding:12px 14px;
+    border-bottom:1.5px solid var(--ink);
+    white-space:nowrap;
+  }
+  thead th.num, td.num{text-align:right;}
+  tbody td{
+    padding:14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    font-size:14.5px;
+  }
+  tbody tr:hover{background:rgba(62,91,107,0.06);}
+  .nama-cell strong{
+    display:block;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:15px;
+  }
+  .nama-cell span{
+    display:block;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:2px;
+    max-width:34ch;
+  }
+  .price{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+  }
+  .status-pill{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    padding:3px 8px;
+    border-radius:20px;
+    border:1px solid currentColor;
+  }
+  .status-tersedia{color:var(--ok);}
+  .status-disewa{color:var(--amber-deep);}
+  .status-menunggu{color:var(--amber-deep);}
+  .status-dikonfirmasi{color:var(--steel-deep);}
+  .status-selesai{color:var(--ok);}
+  .status-dibatalkan{color:var(--danger);}
+  select.status-select{
+    width:auto;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    padding:5px 8px;
+  }
+  td.actions{white-space:nowrap;text-align:right;}
+  .empty-row td{
+    text-align:center;
+    padding:48px 16px;
+    color:var(--ink-soft);
+  }
+  .empty-row .big{
+    font-family:var(--font-display);
+    font-size:18px;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+
+  .foot-note{
+    padding:16px 32px 26px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line-strong);
+  }
+
+  @media (max-width:640px){
+    .head{flex-direction:column;align-items:flex-start;}
+    .head-logo{max-width:180px;}
+    .grid{grid-template-columns:1fr;}
+    thead{display:none;}
+    table, tbody, tr, td{display:block;width:100%;}
+    tbody tr{border-bottom:2px solid var(--line-strong);padding:10px 0;}
+    tbody td{border-bottom:none;padding:6px 14px;}
+    td.num{text-align:left;}
+    td[data-label]::before{
+      content:attr(data-label);
+      display:block;
+      font-family:var(--font-mono);
+      font-size:11px;
+      color:var(--ink-soft);
+      margin-bottom:3px;
+    }
+    td.actions{text-align:left;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+
+  /* ---------- modal login admin ---------- */
+  #loginModal{
+    position:fixed; inset:0; z-index:9999;
+    display:none; align-items:center; justify-content:center;
+    padding:20px; background:rgba(0,0,0,0.5);
+  }
+  #loginModal.active{display:flex;}
+  .login-card{
+    width:min(400px,100%); background:var(--paper-raised);
+    border:1px solid var(--line-strong); box-shadow:0 18px 60px rgba(0,0,0,.2);
+    padding:26px 30px; position:relative;
+  }
+  .login-card h2{margin:0 0 6px;font-family:var(--font-display);font-size:24px;}
+  .login-card p{margin:0 0 18px;color:var(--ink-soft);font-size:13.5px;}
+  .login-error{display:none;color:var(--danger);font-size:13px;margin:10px 0;}
+  .login-error.show{display:block;}
+  .close-modal{
+    position:absolute; top:16px; right:16px;
+    background:none; border:none; font-size:20px; cursor:pointer; color:var(--ink-soft);
+  }
+
+  /* role visibility control */
+  .admin-only{display:none!important;}
+  .admin-block{display:none!important;}
+  body.auth-admin .admin-only{display:inline-block!important;}
+  body.auth-admin button.admin-only{display:inline-block!important;}
+  body.auth-admin .admin-block{display:block!important;}
+  body.auth-admin .user-only{display:none!important;}
+
+  .session-bar{
+    display:flex;justify-content:flex-end;align-items:center;gap:12px;
+    padding:10px 32px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-soft);
+  }
+  .session-role{font-family:var(--font-mono);}
+
+</style>
+</head>
+<body>
+
+<!-- Modal Login khusus Admin -->
+<div id="loginModal">
+  <div class="login-card">
+    <button type="button" class="close-modal" id="closeLoginModal">&times;</button>
+    <h2>Login Admin</h2>
+    <p>Masukan ID dan password untuk mengelola data alat dan pesanan.</p>
+
+    <form id="adminLoginForm">
+      <div style="margin-bottom:14px;">
+        <label for="adminId">ID Admin</label>
+        <input type="text" id="adminId" autocomplete="username" placeholder="Masukkan ID admin">
+      </div>
+      <div style="margin-bottom:14px;">
+        <label for="adminPassword">Password</label>
+        <input type="password" id="adminPassword" autocomplete="current-password" placeholder="Masukkan password">
+      </div>
+      <div class="login-error" id="loginError">ID admin atau password salah.</div>
+      <button class="btn-primary" type="submit" style="width:100%;">Masuk sebagai Admin</button>
+    </form>
+  </div>
+</div>
+
+<div class="sheet">
+
+  <!-- Bar Atas / Tombol Login -->
+  <div class="session-bar">
+    <span>Akses: <strong class="session-role" id="sessionRole">PENYEWA</strong></span>
+    <button type="button" class="btn-ghost" id="loginAdminBtn">Login Admin</button>
+    <button type="button" class="btn-ghost" id="logoutBtn" style="display:none;">Keluar</button>
+  </div>
+
+  <header class="head">
+    <div class="head-left">
+      <h1>Sewa Alat Berat</h1>
+      <p>Dengan hormat, bersama ini kami sampaikan daftar harga sewa alat berat yang kami sediakan untuk mendukung kelancaran proyek konstruksi Bapak/Ibu. Kami berkomitmen menyediakan unit alat berat dengan kondisi terawat, siap operasi, serta didukung tenaga operator berpengalaman untuk hasil kerja yang optimal.</p>
+    </div>
+    <div class="head-logo">
+      <img src="C:\Users\ASUS\Pictures\Screenshots\Logo_4b.png" alt="PT. Bina Bangun Banua Bersama — General Contractor">
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <div class="main-col">
+
+      <!-- ===== Daftar Alat Berat ===== -->
+      <section class="block">
+        <div class="block-head">
+          <h2>Daftar Alat Berat</h2>
+        </div>
+
+        <div class="toolbar">
+          <div class="count" id="countLabel">0 unit terdaftar</div>
+          <div class="right">
+            <input type="search" id="searchInput" placeholder="Cari nama alat…" aria-label="Cari nama alat">
+            <button class="btn-primary admin-only" id="openAddBtn" type="button">+ Tambah alat</button>
+          </div>
+        </div>
+
+        <div id="panel">
+          <div class="panel-inner">
+            <h2 id="panelTitle">Tambah alat berat</h2>
+            <form id="itemForm" novalidate>
+              <input type="hidden" id="itemId">
+              <div class="grid">
+                <div class="full">
+                  <label for="fNama">Nama alat</label>
+                  <input type="text" id="fNama" placeholder="mis. Grider">
+                  <div class="field-error">Nama alat wajib diisi.</div>
+                </div>
+
+                <div>
+                  <label for="fNonOp">Non operator (Rp / hari)</label>
+                  <input type="number" id="fNonOp" min="0" step="1000" placeholder="0">
+                  <div class="field-error">Isi angka 0 atau lebih.</div>
+                </div>
+
+                <div>
+                  <label for="fOp">Dengan operator (Rp / hari)</label>
+                  <input type="number" id="fOp" min="0" step="1000" placeholder="0">
+                  <div class="field-error">Isi angka 0 atau lebih.</div>
+                </div>
+
+                <div>
+                  <label for="fStatus">Status</label>
+                  <select id="fStatus">
+                    <option value="tersedia">Tersedia</option>
+                    <option value="disewa">Sedang disewa</option>
+                  </select>
+                </div>
+
+                <div class="full">
+                  <label for="fCatatan">Catatan mobilisasi (opsional)</label>
+                  <textarea id="fCatatan" placeholder="mis. Wajib pakai kendaraan pengangkut sejak awal penyewaan"></textarea>
+                </div>
+              </div>
+
+              <div class="panel-actions">
+                <button type="submit" class="btn-primary" id="saveBtn">Simpan unit</button>
+                <button type="button" class="btn-ghost" id="cancelBtn">Batal</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama alat</th>
+                <th class="num">Non operator</th>
+                <th class="num">Operator</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== Pemesanan ===== -->
+      <section class="block">
+        <div class="block-head">
+          <h2>Pemesanan</h2>
+          <p class="sub">Penyewa memesan alat lewat form di bawah — konfirmasi otomatis terkirim ke WhatsApp kami.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="count" id="oCountLabel">0 pemesanan</div>
+          <div class="right">
+            <button class="btn-primary user-only" id="openOrderBtn" type="button">+ Pesan alat</button>
+          </div>
+        </div>
+
+        <div id="oPanel">
+          <div class="panel-inner">
+            <h2 id="oPanelTitle">Form pemesanan</h2>
+            <form id="orderForm" novalidate>
+              <input type="hidden" id="oItemId">
+              <div class="grid">
+                <div class="full">
+                  <label for="oNama">Nama penyewa</label>
+                  <input type="text" id="oNama" placeholder="Nama Bapak/Ibu / perusahaan">
+                  <div class="field-error">Nama wajib diisi.</div>
+                </div>
+
+                <div class="full">
+                  <label for="oHp">No. WhatsApp penyewa</label>
+                  <input type="tel" id="oHp" placeholder="mis. 08123456789">
+                  <div class="field-error">Nomor WhatsApp wajib diisi.</div>
+                </div>
+
+                <div>
+                  <label for="oAlat">Nama alat</label>
+                  <select id="oAlat"></select>
+                  <div class="field-error">Pilih alat yang tersedia.</div>
+                </div>
+
+                <div>
+                  <label for="oTipe">Tipe sewa</label>
+                  <select id="oTipe">
+                    <option value="nonOperator">Non operator</option>
+                    <option value="operator">Dengan operator</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="oDurasi">Durasi (hari)</label>
+                  <input type="number" id="oDurasi" min="1" step="1" value="1">
+                  <div class="field-error">Isi minimal 1 hari.</div>
+                </div>
+
+                <div>
+                  <label for="oTanggal">Tanggal mulai sewa</label>
+                  <input type="date" id="oTanggal">
+                  <div class="field-error">Tanggal wajib diisi.</div>
+                </div>
+
+                <div>
+                  <label for="oLokasi">Lokasi proyek</label>
+                  <input type="text" id="oLokasi" placeholder="mis. Jl. MT Haryono, Balikpapan">
+                </div>
+
+                <div class="full">
+                  <label for="oCatatan">Catatan tambahan (opsional)</label>
+                  <textarea id="oCatatan" placeholder="mis. Butuh unit pagi hari"></textarea>
+                </div>
+
+                <div class="est-line" id="oEstLine">Estimasi biaya akan tampil di sini.</div>
+              </div>
+
+              <div class="panel-actions">
+                <button type="submit" class="btn-wa" id="oSaveBtn">Pesan &amp; kirim ke WhatsApp</button>
+                <button type="button" class="btn-ghost" id="oCancelBtn">Batal</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="table-wrap admin-block">
+          <table>
+            <thead>
+              <tr>
+                <th>Penyewa</th>
+                <th>Alat &amp; tipe</th>
+                <th>Mulai / durasi</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="oTbody"></tbody>
+          </table>
+        </div>
+
+        <div class="user-block" id="userOrderStatus" style="padding:20px 32px 26px;">
+          <div style="border:1px solid var(--line);padding:16px;background:var(--paper-raised);">
+            <strong style="font-family:var(--font-display);">Status pemesanan Anda</strong>
+            <div id="myOrderStatusText" style="margin-top:8px;color:var(--ink-soft);font-size:13px;">
+              Belum ada pemesanan pada sesi ini.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="side-col">
+      <div class="note-card">
+        <h3>Catatan</h3>
+        <ul>
+          <li>Biaya bahan bakar ditanggung sepenuhnya oleh pihak penyewa.</li>
+          <li>Untuk jarak mobilisasi maksimal 5 km, apabila melebihi jarak tersebut maka wajib menggunakan jasa trailer.</li>
+          <li>Biaya mobilisasi disesuaikan dengan jarak tempuh pulang-pergi (PP) ke lokasi proyek.</li>
+          <li>Khusus unit Baby Roller, mobilisasi wajib menggunakan kendaraan pengangkut sejak awal penyewaan.</li>
+          <li>Pembayaran dilakukan di awal sebelum unit alat berat diproses dan dikirim ke lokasi.</li>
+        </ul>
+        <div class="wa-box">
+          <strong>Konfirmasi pemesanan</strong>
+          Setiap pemesanan baru membuka WhatsApp ke 0813-4444-8595 dengan pesan yang sudah terisi otomatis.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="foot-note">Harga dapat berubah sewaktu-waktu. Hubungi kami untuk penawaran dan ketersediaan unit terbaru.</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= Authentication / Roles ================= */
+  var AUTH_KEY = "sab_auth_role_v1";
+  var ADMIN_ID = "admin4b";
+  var ADMIN_PASSWORD = "4badmin";
+
+  function getAuthRole(){
+    try { return sessionStorage.getItem(AUTH_KEY) || ""; } catch(e){ return ""; }
+  }
+
+  function setAuthRole(role){
+    try { sessionStorage.setItem(AUTH_KEY, role); } catch(e){}
+  }
+
+  function clearAuthRole(){
+    try { sessionStorage.removeItem(AUTH_KEY); } catch(e){}
+  }
+
+  function applyRole(role){
+    document.body.classList.remove("auth-admin");
+    if(role === "admin"){
+      document.body.classList.add("auth-admin");
+      elsSessionRole.textContent = "ADMIN";
+      loginAdminBtn.style.display = "none";
+      logoutBtn.style.display = "inline-block";
+    }else{
+      elsSessionRole.textContent = "PENYEWA";
+      loginAdminBtn.style.display = "inline-block";
+      logoutBtn.style.display = "none";
+    }
+    render();
+    renderOrders();
+    renderMyOrderStatus();
+  }
+
+  function renderMyOrderStatus(){
+    var box = document.getElementById("myOrderStatusText");
+    if(!box) return;
+    var phone = "";
+    try { phone = sessionStorage.getItem("sab_user_phone_v1") || ""; } catch(e){}
+    var mine = phone ? oState.orders.filter(function(o){ return o.hp === phone; }) : [];
+    if(!mine.length){
+      box.textContent = "Belum ada pemesanan pada sesi ini. Silakan klik “+ Pesan alat”.";
+      return;
+    }
+    var labels = {
+      menunggu:"Menunggu konfirmasi",
+      dikonfirmasi:"Dikonfirmasi",
+      selesai:"Selesai",
+      dibatalkan:"Dibatalkan"
+    };
+    box.innerHTML = mine.map(function(o){
+      return "<div style='padding:9px 0;border-top:1px solid var(--line);'>" +
+        "<strong>" + escapeHtml(o.alat) + "</strong> · " +
+        escapeHtml(fmtTanggal(o.tanggal)) + " · " + escapeHtml(String(o.durasi)) + " hari" +
+        "<br><span class='status-pill status-" + escapeHtml(o.status) + "'>" +
+        escapeHtml(labels[o.status] || o.status) + "</span></div>";
+    }).join("");
+  }
+
+  var loginModal = document.getElementById("loginModal");
+  var loginAdminBtn = document.getElementById("loginAdminBtn");
+  var closeLoginModal = document.getElementById("closeLoginModal");
+  var adminLoginForm = document.getElementById("adminLoginForm");
+  var loginError = document.getElementById("loginError");
+  var logoutBtn = document.getElementById("logoutBtn");
+  var elsSessionRole = document.getElementById("sessionRole");
+
+  loginAdminBtn.addEventListener("click", function(){
+    loginModal.classList.add("active");
+    loginError.classList.remove("show");
+  });
+
+  closeLoginModal.addEventListener("click", function(){
+    loginModal.classList.remove("active");
+  });
+
+  adminLoginForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(document.getElementById("adminId").value.trim() === ADMIN_ID &&
+       document.getElementById("adminPassword").value === ADMIN_PASSWORD){
+      setAuthRole("admin");
+      applyRole("admin");
+      adminLoginForm.reset();
+      loginModal.classList.remove("active");
+    }else{
+      loginError.classList.add("show");
+    }
+  });
+
+  logoutBtn.addEventListener("click", function(){
+    clearAuthRole();
+    applyRole("");
+  });
+
+  var STORAGE_KEY = "sab_equipment_v1";
+  var ORDERS_KEY = "sab_orders_v1";
+  var WA_NUMBER = "6281344448595";
+
+  var SEED = [
+    { id: "seed-1", nama: "Grider", nonOperator: 1500000, operator: 2000000, status: "tersedia",
+      catatan: "Mobilisasi maksimal 5 km, lebih dari itu wajib pakai trailer." },
+    { id: "seed-2", nama: "Baby Roller", nonOperator: 750000, operator: 1000000, status: "tersedia",
+      catatan: "Wajib pakai kendaraan pengangkut sejak awal penyewaan." },
+    { id: "seed-3", nama: "Vibro Roller", nonOperator: 1750000, operator: 2100000, status: "tersedia",
+      catatan: "Mobilisasi maksimal 5 km, lebih dari itu wajib pakai trailer." }
+  ];
+
+  var els = {
+    tbody: document.getElementById("tbody"),
+    countLabel: document.getElementById("countLabel"),
+    search: document.getElementById("searchInput"),
+    openAddBtn: document.getElementById("openAddBtn"),
+    panel: document.getElementById("panel"),
+    panelTitle: document.getElementById("panelTitle"),
+    form: document.getElementById("itemForm"),
+    itemId: document.getElementById("itemId"),
+    fNama: document.getElementById("fNama"),
+    fNonOp: document.getElementById("fNonOp"),
+    fOp: document.getElementById("fOp"),
+    fStatus: document.getElementById("fStatus"),
+    fCatatan: document.getElementById("fCatatan"),
+    cancelBtn: document.getElementById("cancelBtn")
+  };
+
+  var oEls = {
+    tbody: document.getElementById("oTbody"),
+    countLabel: document.getElementById("oCountLabel"),
+    openBtn: document.getElementById("openOrderBtn"),
+    panel: document.getElementById("oPanel"),
+    panelTitle: document.getElementById("oPanelTitle"),
+    form: document.getElementById("orderForm"),
+    itemId: document.getElementById("oItemId"),
+    oNama: document.getElementById("oNama"),
+    oHp: document.getElementById("oHp"),
+    oAlat: document.getElementById("oAlat"),
+    oTipe: document.getElementById("oTipe"),
+    oDurasi: document.getElementById("oDurasi"),
+    oTanggal: document.getElementById("oTanggal"),
+    oLokasi: document.getElementById("oLokasi"),
+    oCatatan: document.getElementById("oCatatan"),
+    estLine: document.getElementById("oEstLine"),
+    cancelBtn: document.getElementById("oCancelBtn")
+  };
+
+  var state = { items: [], query: "", pendingDeleteId: null };
+  var oState = { orders: [], pendingDeleteId: null };
+
+  function loadFromStorage(key, fallback){
+    try{
+      var raw = localStorage.getItem(key);
+      if(raw){
+        var parsed = JSON.parse(raw);
+        if(Array.isArray(parsed)) return parsed;
+      }
+    }catch(e){}
+    return fallback;
+  }
+  function saveToStorage(key, val){
+    try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+  }
+
+  function fmtRp(n){
+    n = Number(n) || 0;
+    return "Rp " + n.toLocaleString("id-ID");
+  }
+
+  function uid(){
+    return "u" + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+  }
+
+  function escapeHtml(s){
+    return String(s || "").replace(/[&<>"']/g, function(c){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];
+    });
+  }
+
+  function fmtTanggal(iso){
+    if(!iso) return "-";
+    var d = new Date(iso + "T00:00:00");
+    if(isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString("id-ID", { day:"numeric", month:"short", year:"numeric" });
+  }
+
+  /* ================= Equipment CRUD ================= */
+
+  function render(){
+    var q = state.query.trim().toLowerCase();
+    var items = state.items.filter(function(it){
+      return !q || it.nama.toLowerCase().indexOf(q) !== -1;
+    });
+
+    els.countLabel.textContent = state.items.length + " unit terdaftar" +
+      (q ? " · " + items.length + " cocok dengan \u201c" + state.query + "\u201d" : "");
+
+    if(items.length === 0){
+      els.tbody.innerHTML =
+        '<tr class="empty-row"><td colspan="5">' +
+        '<div class="big">' + (state.items.length === 0 ? "Belum ada unit" : "Tidak ditemukan") + '</div>' +
+        (state.items.length === 0 ? "Tambahkan unit alat berat pertama Anda." : "Coba kata kunci lain.") +
+        '</td></tr>';
+      renderOrderAlatOptions();
+      return;
+    }
+
+    els.tbody.innerHTML = items.map(function(it){
+      var isConfirm = state.pendingDeleteId === it.id;
+      var statusClass = it.status === "disewa" ? "status-disewa" : "status-tersedia";
+      var statusLabel = it.status === "disewa" ? "Sedang disewa" : "Tersedia";
+      return (
+        '<tr>' +
+          '<td data-label="Nama alat" class="nama-cell">' +
+            '<strong>' + escapeHtml(it.nama) + '</strong>' +
+            (it.catatan ? '<span>' + escapeHtml(it.catatan) + '</span>' : '') +
+          '</td>' +
+          '<td data-label="Non operator" class="num price">' + fmtRp(it.nonOperator) + ' /hari</td>' +
+          '<td data-label="Operator" class="num price">' + fmtRp(it.operator) + ' /hari</td>' +
+          '<td data-label="Status"><span class="status-pill ' + statusClass + '">' + statusLabel + '</span></td>' +
+          '<td class="actions">' +
+            (isConfirm ?
+              '<span class="admin-only"><button type="button" class="btn-text danger" data-confirm-del="' + it.id + '">Hapus permanen?</button> ' +
+              '<button type="button" class="btn-text" data-cancel-del="' + it.id + '">Batal</button></span>'
+              :
+              '<span class="admin-only"><button type="button" class="btn-text" data-edit="' + it.id + '">Ubah</button> ' +
+              '<button type="button" class="btn-text danger" data-del="' + it.id + '">Hapus</button></span>'
+            ) +
+          '</td>' +
+        '</tr>'
+      );
+    }).join("");
+
+    renderOrderAlatOptions();
+  }
+
+  function openPanel(editing){
+    els.panel.classList.add("open");
+    els.panelTitle.textContent = editing ? "Ubah alat berat" : "Tambah alat berat";
+    els.fNama.focus();
+  }
+  function closePanel(){
+    els.panel.classList.remove("open");
+    els.form.reset();
+    els.itemId.value = "";
+    Array.prototype.forEach.call(els.form.querySelectorAll(".invalid"), function(n){ n.classList.remove("invalid"); });
+  }
+
+  function fillFormForEdit(it){
+    els.itemId.value = it.id;
+    els.fNama.value = it.nama;
+    els.fNonOp.value = it.nonOperator;
+    els.fOp.value = it.operator;
+    els.fStatus.value = it.status;
+    els.fCatatan.value = it.catatan || "";
+  }
+
+  function setFieldValidity(fieldWrap, valid){
+    if(valid) fieldWrap.classList.remove("invalid");
+    else fieldWrap.classList.add("invalid");
+  }
+
+  function validateForm(){
+    var ok = true;
+    var namaWrap = els.fNama.closest(".full");
+    var nonOpWrap = els.fNonOp.parentElement;
+    var opWrap = els.fOp.parentElement;
+
+    var namaValid = els.fNama.value.trim().length > 0;
+    setFieldValidity(namaWrap, namaValid);
+    ok = ok && namaValid;
+
+    var nonOpValid = els.fNonOp.value !== "" && Number(els.fNonOp.value) >= 0;
+    setFieldValidity(nonOpWrap, nonOpValid);
+    ok = ok && nonOpValid;
+
+    var opValid = els.fOp.value !== "" && Number(els.fOp.value) >= 0;
+    setFieldValidity(opWrap, opValid);
+    ok = ok && opValid;
+
+    return ok;
+  }
+
+  els.openAddBtn.addEventListener("click", function(){
+    if(getAuthRole() !== "admin") return;
+    closePanel();
+    openPanel(false);
+  });
+
+  els.cancelBtn.addEventListener("click", closePanel);
+
+  els.form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(getAuthRole() !== "admin") return;
+    if(!validateForm()) return;
+
+    var id = els.itemId.value;
+    var payload = {
+      nama: els.fNama.value.trim(),
+      nonOperator: Number(els.fNonOp.value),
+      operator: Number(els.fOp.value),
+      status: els.fStatus.value,
+      catatan: els.fCatatan.value.trim()
+    };
+
+    if(id){
+      state.items = state.items.map(function(it){
+        return it.id === id ? Object.assign({}, it, payload) : it;
+      });
+    }else{
+      payload.id = uid();
+      state.items.unshift(payload);
+    }
+
+    saveToStorage(STORAGE_KEY, state.items);
+    closePanel();
+    render();
+  });
+
+  els.search.addEventListener("input", function(){
+    state.query = els.search.value;
+    render();
+  });
+
+  els.tbody.addEventListener("click", function(e){
+    if(getAuthRole() !== "admin") return;
+    var editId = e.target.getAttribute("data-edit");
+    var delId = e.target.getAttribute("data-del");
+    var confirmId = e.target.getAttribute("data-confirm-del");
+    var cancelDelId = e.target.getAttribute("data-cancel-del");
+
+    if(editId){
+      var it = state.items.find(function(x){ return x.id === editId; });
+      if(it){ fillFormForEdit(it); openPanel(true); }
+    }else if(delId){
+      state.pendingDeleteId = delId;
+      render();
+    }else if(confirmId){
+      state.items = state.items.filter(function(x){ return x.id !== confirmId; });
+      state.pendingDeleteId = null;
+      saveToStorage(STORAGE_KEY, state.items);
+      render();
+    }else if(cancelDelId){
+      state.pendingDeleteId = null;
+      render();
+    }
+  });
+
+  /* ================= Order (Pemesanan) CRUD ================= */
+
+  var STATUS_LABEL = {
+    menunggu: "Menunggu konfirmasi",
+    dikonfirmasi: "Dikonfirmasi",
+    selesai: "Selesai",
+    dibatalkan: "Dibatalkan"
+  };
+
+  function renderOrderAlatOptions(){
+    var current = oEls.oAlat.value;
+    var opts = state.items.map(function(it){
+      return '<option value="' + escapeHtml(it.nama) + '">' + escapeHtml(it.nama) +
+        (it.status === "disewa" ? " (sedang disewa)" : "") + '</option>';
+    }).join("");
+    oEls.oAlat.innerHTML = opts || '<option value="">Belum ada alat terdaftar</option>';
+    if(current){
+      var stillExists = state.items.some(function(it){ return it.nama === current; });
+      if(stillExists) oEls.oAlat.value = current;
+    }
+    updateEstimate();
+  }
+
+  function findAlat(nama){
+    return state.items.find(function(it){ return it.nama === nama; });
+  }
+
+  function updateEstimate(){
+    var it = findAlat(oEls.oAlat.value);
+    var durasi = Math.max(1, Number(oEls.oDurasi.value) || 1);
+    if(!it){
+      oEls.estLine.textContent = "Pilih alat untuk melihat estimasi biaya.";
+      return;
+    }
+    var hargaHarian = oEls.oTipe.value === "operator" ? it.operator : it.nonOperator;
+    oEls.estLine.textContent = "Estimasi: " + fmtRp(hargaHarian) + " /hari × " + durasi + " hari = " + fmtRp(hargaHarian * durasi) +
+      " (belum termasuk biaya mobilisasi & bahan bakar)";
+  }
+
+  function renderOrders(){
+    oEls.countLabel.textContent = oState.orders.length + " pemesanan";
+
+    if(oState.orders.length === 0){
+      oEls.tbody.innerHTML =
+        '<tr class="empty-row"><td colspan="5">' +
+        '<div class="big">Belum ada pemesanan</div>' +
+        'Klik “+ Pesan alat” untuk membuat pemesanan pertama.' +
+        '</td></tr>';
+      return;
+    }
+
+    oEls.tbody.innerHTML = oState.orders.map(function(o){
+      var isConfirm = oState.pendingDeleteId === o.id;
+      var statusClass = "status-" + o.status;
+      var tipeLabel = o.tipe === "operator" ? "Dengan operator" : "Non operator";
+      return (
+        '<tr>' +
+          '<td data-label="Penyewa" class="nama-cell">' +
+            '<strong>' + escapeHtml(o.nama) + '</strong>' +
+            '<span>' + escapeHtml(o.hp) + (o.lokasi ? " · " + escapeHtml(o.lokasi) : "") + '</span>' +
+          '</td>' +
+          '<td data-label="Alat & tipe">' + escapeHtml(o.alat) + '<br><span style="color:var(--ink-soft);font-size:12.5px;">' + tipeLabel + '</span></td>' +
+          '<td data-label="Mulai / durasi">' + fmtTanggal(o.tanggal) + '<br><span style="color:var(--ink-soft);font-size:12.5px;">' + o.durasi + ' hari</span></td>' +
+          '<td data-label="Status">' +
+            '<select class="status-select ' + statusClass + '" data-status-for="' + o.id + '">' +
+              Object.keys(STATUS_LABEL).map(function(k){
+                return '<option value="' + k + '"' + (o.status === k ? " selected" : "") + '>' + STATUS_LABEL[k] + '</option>';
+              }).join("") +
+            '</select>' +
+          '</td>' +
+          '<td class="actions">' +
+            (isConfirm ?
+              '<span class="admin-only"><button type="button" class="btn-text danger" data-oconfirm-del="' + o.id + '">Hapus permanen?</button> ' +
+              '<button type="button" class="btn-text" data-ocancel-del="' + o.id + '">Batal</button></span>'
+              :
+              '<span class="admin-only"><button type="button" class="btn-text" data-oedit="' + o.id + '">Ubah</button> ' +
+              '<button type="button" class="btn-text" data-owa="' + o.id + '">Kirim WA</button> ' +
+              '<button type="button" class="btn-text danger" data-odel="' + o.id + '">Hapus</button></span>'
+            ) +
+          '</td>' +
+        '</tr>'
+      );
+    }).join("");
+  }
+
+  function openOrderPanel(editing){
+    oEls.panel.classList.add("open");
+    oEls.panelTitle.textContent = editing ? "Ubah pemesanan" : "Form pemesanan";
+    renderOrderAlatOptions();
+    oEls.oNama.focus();
+  }
+  function closeOrderPanel(){
+    oEls.panel.classList.remove("open");
+    oEls.form.reset();
+    oEls.itemId.value = "";
+    Array.prototype.forEach.call(oEls.form.querySelectorAll(".invalid"), function(n){ n.classList.remove("invalid"); });
+  }
+
+  function fillOrderFormForEdit(o){
+    oEls.itemId.value = o.id;
+    oEls.oNama.value = o.nama;
+    oEls.oHp.value = o.hp;
+    renderOrderAlatOptions();
+    oEls.oAlat.value = o.alat;
+    oEls.oTipe.value = o.tipe;
+    oEls.oDurasi.value = o.durasi;
+    oEls.oTanggal.value = o.tanggal;
+    oEls.oLokasi.value = o.lokasi || "";
+    oEls.oCatatan.value = o.catatan || "";
+    updateEstimate();
+  }
+
+  function validateOrderForm(){
+    var ok = true;
+    var namaWrap = oEls.oNama.closest(".full");
+    var hpWrap = oEls.oHp.closest(".full");
+    var alatWrap = oEls.oAlat.parentElement;
+    var durasiWrap = oEls.oDurasi.parentElement;
+    var tglWrap = oEls.oTanggal.parentElement;
+
+    var namaValid = oEls.oNama.value.trim().length > 0;
+    setFieldValidity(namaWrap, namaValid); ok = ok && namaValid;
+
+    var hpValid = oEls.oHp.value.trim().length >= 8;
+    setFieldValidity(hpWrap, hpValid); ok = ok && hpValid;
+
+    var alatValid = !!oEls.oAlat.value;
+    setFieldValidity(alatWrap, alatValid); ok = ok && alatValid;
+
+    var durasiValid = Number(oEls.oDurasi.value) >= 1;
+    setFieldValidity(durasiWrap, durasiValid); ok = ok && durasiValid;
+
+    var tglValid = oEls.oTanggal.value !== "";
+    setFieldValidity(tglWrap, tglValid); ok = ok && tglValid;
+
+    return ok;
+  }
+
+  function buildWaText(o){
+    var it = findAlat(o.alat);
+    var hargaHarian = it ? (o.tipe === "operator" ? it.operator : it.nonOperator) : 0;
+    var total = hargaHarian * o.durasi;
+    var tipeLabel = o.tipe === "operator" ? "Dengan operator" : "Non operator";
+    var lines = [
+      "Halo, ada pemesanan alat berat baru:",
+      "Nama penyewa: " + o.nama,
+      "No. WhatsApp: " + o.hp,
+      "Alat: " + o.alat + " (" + tipeLabel + ")",
+      "Tanggal mulai: " + fmtTanggal(o.tanggal),
+      "Durasi: " + o.durasi + " hari",
+      "Lokasi proyek: " + (o.lokasi || "-"),
+      "Estimasi biaya: " + fmtRp(total) + " (belum termasuk mobilisasi & BBM)",
+      o.catatan ? ("Catatan: " + o.catatan) : null,
+      "",
+      "Mohon konfirmasi ketersediaan unit. Terima kasih."
+    ].filter(function(l){ return l !== null; });
+    return lines.join("\n");
+  }
+
+  function sendWaNotification(o){
+    var text = buildWaText(o);
+    var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
+  }
+
+  oEls.openBtn.addEventListener("click", function(){
+    closeOrderPanel();
+    openOrderPanel(false);
+  });
+  oEls.cancelBtn.addEventListener("click", closeOrderPanel);
+  oEls.oAlat.addEventListener("change", updateEstimate);
+  oEls.oTipe.addEventListener("change", updateEstimate);
+  oEls.oDurasi.addEventListener("input", updateEstimate);
+
+  oEls.form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!validateOrderForm()) return;
+
+    var id = oEls.itemId.value;
+    var payload = {
+      nama: oEls.oNama.value.trim(),
+      hp: oEls.oHp.value.trim(),
+      alat: oEls.oAlat.value,
+      tipe: oEls.oTipe.value,
+      durasi: Number(oEls.oDurasi.value),
+      tanggal: oEls.oTanggal.value,
+      lokasi: oEls.oLokasi.value.trim(),
+      catatan: oEls.oCatatan.value.trim()
+    };
+
+    var isNew = !id;
+
+    if(id){
+      oState.orders = oState.orders.map(function(o){
+        return o.id === id ? Object.assign({}, o, payload) : o;
+      });
+    }else{
+      payload.id = uid();
+      payload.status = "menunggu";
+      oState.orders.unshift(payload);
+    }
+
+    saveToStorage(ORDERS_KEY, oState.orders);
+    closeOrderPanel();
+    renderOrders();
+
+    if(isNew){
+      try { sessionStorage.setItem("sab_user_phone_v1", payload.hp); } catch(e){}
+      sendWaNotification(oState.orders[0]);
+    }
+    renderMyOrderStatus();
+  });
+
+  oEls.tbody.addEventListener("click", function(e){
+    if(getAuthRole() !== "admin") return;
+    var editId = e.target.getAttribute("data-oedit");
+    var delId = e.target.getAttribute("data-odel");
+    var confirmId = e.target.getAttribute("data-oconfirm-del");
+    var cancelDelId = e.target.getAttribute("data-ocancel-del");
+    var waId = e.target.getAttribute("data-owa");
+
+    if(editId){
+      var o = oState.orders.find(function(x){ return x.id === editId; });
+      if(o){ fillOrderFormForEdit(o); openOrderPanel(true); }
+    }else if(waId){
+      var ow = oState.orders.find(function(x){ return x.id === waId; });
+      if(ow) sendWaNotification(ow);
+    }else if(delId){
+      oState.pendingDeleteId = delId;
+      renderOrders();
+    }else if(confirmId){
+      oState.orders = oState.orders.filter(function(x){ return x.id !== confirmId; });
+      oState.pendingDeleteId = null;
+      saveToStorage(ORDERS_KEY, oState.orders);
+      renderOrders();
+    }else if(cancelDelId){
+      oState.pendingDeleteId = null;
+      renderOrders();
+    }
+  });
+
+  oEls.tbody.addEventListener("change", function(e){
+    if(getAuthRole() !== "admin") return;
+    var forId = e.target.getAttribute("data-status-for");
+    if(!forId) return;
+    oState.orders = oState.orders.map(function(o){
+      return o.id === forId ? Object.assign({}, o, { status: e.target.value }) : o;
+    });
+    saveToStorage(ORDERS_KEY, oState.orders);
+    renderOrders();
+  });
+
+  /* ---- init ---- */
+  state.items = loadFromStorage(STORAGE_KEY, SEED.slice());
+  oState.orders = loadFromStorage(ORDERS_KEY, []);
+  render();
+  renderOrders();
+  applyRole(getAuthRole());
+})();
+</script>
+
+</body>
+</html>
